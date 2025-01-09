@@ -1,0 +1,271 @@
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #91077f;
+  color: white;
+  width: calc(100% - 220px); /* Ajustează lățimea în funcție de meniul lateral */
+  margin-left: 220px;
+  transition: margin-left 0.3s, width 0.3s;
+}
+
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px;
+  background-color: #3d0066;
+  padding-top: 20px;
+  z-index: 1000;
+  transition: width 0.3s;
+}
+
+@media (max-width: 768px) {
+  nav {
+    width: 100%; /* Extinde meniul pe toată lățimea */
+    height: auto;
+    position: relative;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Elemente centrate */
+    flex-wrap: wrap;
+  }
+
+  nav ul li {
+    margin: 5px;
+  }
+
+  nav a {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+/* Main content */
+main {
+  margin-left: 220px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 0; /* Elimină spațiul lateral */
+  }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #3d0066;
+  color: white;
+  padding: 20px;
+  margin-left: 220px; /* În cazul desktop */
+  transition: margin-left 0.3s;
+}
+
+@media (max-width: 768px) {
+  footer {
+    margin-left: 0; /* Ajustează poziția pentru ecrane mai mici */
+    text-align: center; /* Centrare în mod responsive */
+  }
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Dark Mode */
+  body.dark-mode {
+    background-color: #6b6b6a;
+    color: #f4f4f4;
+  }
+  
+  /* Navigation Styles */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 150px;
+    background-color: #3d0066;
+    padding-top: 20px;
+    z-index: 1000;
+    transition: background-color 0.3s;
+  }
+  
+  body.dark-mode nav {
+    background-color: #2b004a;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top:0
+  }
+  
+  nav ul li {
+    margin: 10px 0;
+  }
+  
+  nav a {
+    color: white;
+    padding: 15px;
+    display: block;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+  
+  nav a.active {
+    background-color: #6c007d;
+    border-radius: 5px;
+  }
+  
+  nav a:hover {
+    background-color: #6c007d;
+  }
+  
+  /* Help Button */
+  .help-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #91077f;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .help-icon:hover {
+    background-color: #6c007d;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    nav {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+  
+    main {
+      margin-left: 0;
+    }
+  
+    footer {
+      display: flex;              /* Flexbox pentru aliniere orizontală */
+      justify-content: center;    /* Centrează icon-urile în footer */
+      align-items: center;        /* Centrează icon-urile pe verticală */
+      gap: 10px;                  /* Distanță între icon-uri */
+    }
+    
+    .fa {
+      display: inline-flex;       /* Icon-ul este un element flexibil */
+      align-items: center;        /* Centrează pictograma pe verticală */
+      justify-content: center;    /* Centrează pictograma pe orizontală */
+      padding: 0;                 /* Elimină padding-ul extra */
+      font-size: 30px;            /* Dimensiunea fontului/iconiței */
+      width: 50px;                /* Dimensiuni egale pentru formă rotundă */
+      height: 50px;
+      text-align: center;
+      text-decoration: none;
+      margin: 0;                  /* Elimină marginile individuale */
+      border-radius: 50%;         /* Formă rotundă */
+    }
+  .fa-facebook {
+    color: white;
+  }
+  
+  .fa-twitter {
+    color: white;
+  }
+  .fa-instagram {
+    color: white;
+  }
+  
+  .fa-reddit {
+    color: white;
+  }
+
+  ..highlight {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+  }
+  
+  #scroll-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+  
+  #scroll-buttons button {
+    background-color: #91077f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  #scroll-buttons button:hover {
+    background-color: #6c007d;
+    transform: scale(1.1);
+  }
+  
+  body.dark-mode #scroll-buttons button {
+    background-color: #2b004a;
+  }
+  
+  body.dark-mode #scroll-buttons button:hover {
+    background-color: #262625;
+  }
+
+  nav input[type="text"] {
+    display: block;
+    margin: 20px auto;
+    width: 80%; /* Ajustare pentru a încăpea bine */
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #b388ff;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: #f9f0ff; /* Fundal mov pal */
+    color: #333;
+  }
+  
+  nav input[type="text"]:focus {
+    border-color: #91077f; /* Highlight la focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(145, 7, 127, 0.5);
+  }
+  

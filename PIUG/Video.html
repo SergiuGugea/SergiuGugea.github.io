@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Game Reviews - Your Source for Honest Reviews</title>
+  <style>
+    /* Reset stiluri */
+
+    body {
+      font-family: Cormorant-Unicase, serif;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #6b6b6a;
+      color: #f4f4f4;
+    }
+
+    /* Header */
+    header {
+      background-color: #91077f;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      margin-left: 150px;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode header {
+      background-color: #62004a;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 150px;
+      background-color: #3d0066;
+      padding-top: 20px;
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode nav {
+      background-color: #2b004a;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #6c007d;
+      border-radius: 5px;
+    }
+    nav input[type="text"] {
+      width: 80%;
+      margin: 20px 0;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #b388ff;
+      border-radius: 5px;
+      background-color: #f9f0ff; /* Fundal mov pal */
+      color: #333;
+    }
+
+    nav input[type="text"]:focus {
+      outline: none;
+      border-color: #91077f;
+      box-shadow: 0 0 5px rgba(145, 7, 127, 0.5);
+    }
+
+    /* Dark Mode Button */
+    .dark-mode-toggle {
+      margin: 15px;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      font-size: 18px;
+      display: block;
+      padding: 10px;
+      background-color: #3d0066;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      background-color: #262625;
+      border-radius: 6px;
+    }
+
+    body.dark-mode .dark-mode-toggle {
+      background-color: #2b004a;
+    }
+
+    body.dark-mode .dark-mode-toggle:hover {
+      background-color: #262625;
+    }
+
+    /* Main Content */
+    main {
+      margin-left: 200px;
+      padding: 20px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #3d0066;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-left: 150px;
+      margin-top: 20px;
+    }
+
+    body.dark-mode footer {
+      background-color: #2b004a;
+    }
+
+    footer a {
+      color: #99CCFF;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsivitate */
+    @media (max-width: 768px) {
+      nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 10px;
+      }
+
+      footer {
+        margin-left: 0;
+        padding: 10px;
+      }
+
+      .review-card {
+        margin: 10px auto;
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      header {
+    width: 100%; /* Ocupă toată lățimea ecranului */
+    margin-left: 0; /* Elimină decalajul lateral */
+    padding: 15px; /* Ajustare padding pentru ecrane mici */
+  }
+
+      .review-card {
+        padding: 10px;
+      }
+    }
+    #scrollButtons {
+  position: fixed;
+  bottom: 80px; /* Ridică butoanele mai sus pentru a evita suprapunerea */
+  right: 20px; /* Păstrează poziția în dreapta */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+  #scrollButtons button {
+    background-color: #c080ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+  }
+
+  #scrollButtons button:hover {
+    background-color: #9a66cc;
+  }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Game Reviews</h1>
+    <p>Your Trusted Source for Honest Reviews</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul id="navList">
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Template_DM.html">Latest Reviews</a></li>
+      <li><a href="upcoming.html">Upcoming Games</a></li>
+      <li><a href="Video.html"><b>Video</b></a></li>
+      <li><a href="Contacte.html">Contact Us</a></li>
+    </ul>
+    <span class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</span>
+    <input type="text" id="searchInput" placeholder="Search..." onkeydown="handleSearch(event)">
+  </nav>
+
+  <!-- Main Content -->
+  
+  <main>
+    <video width="720" height="576" autoplay loop muted>
+      <source src="video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+    <div id="scrollButtons">
+      <button id="scrollUp" onclick="scrollToTop()">↑</button>
+      <button id="scrollDown" onclick="scrollToBottom()">↓</button>
+    </div>
+  </main>
+    
+
+  <!-- Footer -->
+  <footer>
+    <p>Connect with us:</p>
+    <a href="https://www.facebook.com/profile.php?id=61566307958957" class="fa fa-facebook"></a>
+   <a href="" class="fa fa-instagram"></a>
+   <a href="" class ="fa fa-twitter"></a>
+   <a href="https://www.reddit.com/user/Nikname666/" class="fa fa-reddit"></a>
+    <div class="help-icon" onclick="showHelp()">?</div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+  <script src="scripts.js"></script>
+</body>
+</html>

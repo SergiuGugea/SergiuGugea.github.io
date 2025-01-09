@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Game Reviews - Your Source for Honest Reviews</title>
+  <style>
+    /* Reset stiluri */
+
+    body {
+      font-family: Cormorant-Unicase, serif;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #6b6b6a;
+      color: #f4f4f4;
+    }
+
+    /* Header */
+    header {
+      background-color: #91077f;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      margin-left: 150px;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode header {
+      background-color: #62004a;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 150px;
+      background-color: #3d0066;
+      padding-top: 20px;
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode nav {
+      background-color: #2b004a;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #6c007d;
+      border-radius: 5px;
+    }
+    nav input[type="text"] {
+      width: 80%;
+      margin: 20px 0;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #b388ff;
+      border-radius: 5px;
+      background-color: #f9f0ff; /* Fundal mov pal */
+      color: #333;
+    }
+
+    nav input[type="text"]:focus {
+      outline: none;
+      border-color: #91077f;
+      box-shadow: 0 0 5px rgba(145, 7, 127, 0.5);
+    }
+
+    /* Dark Mode Button */
+    .dark-mode-toggle {
+      margin: 15px;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      font-size: 18px;
+      display: block;
+      padding: 10px;
+      background-color: #3d0066;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      background-color: #262625;
+      border-radius: 6px;
+    }
+
+    body.dark-mode .dark-mode-toggle {
+      background-color: #2b004a;
+    }
+
+    body.dark-mode .dark-mode-toggle:hover {
+      background-color: #262625;
+    }
+
+    /* Main Content */
+    main {
+      margin-left: 200px;
+      padding: 20px;
+    }
+
+    /* Game Review Section */
+    .review-card {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode .review-card {
+      background-color: #333;
+      color: #f4f4f4;
+    }
+
+    .review-card .score {
+      background-color: goldenrod;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .review-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #3d0066;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-left: 150px;
+      margin-top: 20px;
+    }
+
+    body.dark-mode footer {
+      background-color: #2b004a;
+    }
+
+    footer a {
+      color: #99CCFF;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsivitate */
+    @media (max-width: 768px) {
+      nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 10px;
+      }
+
+      footer {
+        margin-left: 0;
+        padding: 10px;
+      }
+
+      .review-card {
+        margin: 10px auto;
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      header {
+    width: 100%; /* Ocupă toată lățimea ecranului */
+    margin-left: 0; /* Elimină decalajul lateral */
+    padding: 15px; /* Ajustare padding pentru ecrane mici */
+  }
+
+      .review-card {
+        padding: 10px;
+      }
+    }
+    #scrollButtons {
+  position: fixed;
+  bottom: 80px; /* Ridică butoanele mai sus pentru a evita suprapunerea */
+  right: 20px; /* Păstrează poziția în dreapta */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+  #scrollButtons button {
+    background-color: #c080ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+  }
+
+  #scrollButtons button:hover {
+    background-color: #9a66cc;
+  }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Game Reviews</h1>
+    <p>Your Trusted Source for Honest Reviews</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Template_DM.html"><b>Latest Reviews</b></a></li>
+      <li><a href="upcoming.html">Upcoming Games</a></li>
+      <li><a href="Video.html">Video</a></li>
+      <li><a href="Contacte.html">Contact Us</a></li>
+    </ul>
+    <span class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</span>
+      <input type="text" id="searchInput" placeholder="Search reviews..." onkeydown="handleSearch(event)">
+
+
+    
+
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <section id="reviews">
+      <h2>Latest Reviews</h2>
+      <div class="review-card" id="Cyberpunk">
+        <h2>Cyberpunk 2077</h2>
+        <img src="cyberpunk.jpg" alt="Cyberpunk 2077 cover">
+        <span class="score">9.0/10</span>
+        <p>"A breathtaking dystopian future"
+
+          Cyberpunk 2077 succeeds in immersing you in a rich, detailed open world: Night City, a place buzzing with life, neon lights, and danger. The main storyline takes you on an emotional rollercoaster, with memorable characters like Johnny Silverhand, brilliantly portrayed by Keanu Reeves, adding depth and intrigue.
+          While its launch was marred by technical issues, CD Projekt Red has since refined the experience, delivering a polished game with diverse missions, extensive customization, and adrenaline-fueled combat mechanics.
+          If you're a fan of complex sci-fi narratives and cyberpunk aesthetics, this game is a must-play.</p>
+      </div>
+      <div class="review-card" id="Witcher">
+        <h2>The Witcher 3: Wild Hunt</h2>
+        <img src="witcher3.jpg" alt="The Witcher 3 cover">
+        <span class="score">10/10</span>
+        <p>"A masterpiece in storytelling and world-building"
+
+          Few games achieve the level of excellence found in The Witcher 3: Wild Hunt. This action-RPG places you in the boots of Geralt of Rivia, a monster hunter navigating a war-torn, morally complex world. The game boasts a sprawling open world filled with breathtaking landscapes, intriguing characters, and choices that carry meaningful consequences.
+          The narrative is unparalleled, with side quests like "The Bloody Baron" rivaling the quality of the main story. Add to this the addictive card game Gwent, beautifully crafted expansions, and a stunning soundtrack, and you have a title that sets the gold standard for RPGs.</p>
+      </div>
+      <div class="review-card" id="Hades">
+        <h2>Hades</h2>
+        <img src="hades.jpg" alt="Hades cover">
+        <span class="score">9.5/10</span>
+        <p>"A roguelike masterpiece with heart"
+
+          Hades redefines the roguelike genre, combining fast-paced combat with a deep, emotionally resonant narrative. As Zagreus, the son of Hades, you strive to escape the Underworld, encountering Greek gods and legendary figures along the way.
+          Each attempt at escape feels fresh, thanks to randomized encounters and an arsenal of upgradable weapons. The game’s characters are rich with personality, and the dialogues evolve with your progress, making every interaction meaningful.
+          What truly sets Hades apart is its vibrant art style, impeccable voice acting, and an incredible soundtrack that keeps you engaged in every run. It’s a game that keeps calling you back for “just one more try.”</p>
+      </div>
+
+      <div class="review-card" id="Eternal">
+        <h2>Doom Eternal</h2>
+        <img src="eternal.jpg" alt="Doom Eternal cover">
+        <span class="score">9/10</span>
+        <p>Doom Eternal is a fast-paced, brutal first-person shooter that builds on the success of its 2016 predecessor. With fluid combat, new movement mechanics like grappling hooks and wall climbing, and a variety of weapons, the game encourages constant action and mobility. The visuals are stunning, and Mick Gordon's heavy metal soundtrack perfectly complements the intense gameplay. While the story isn’t the focus, the lore and settings are engaging. The game offers high difficulty levels, secrets to uncover, and a competitive multiplayer mode. Overall, Doom Eternal is a thrilling, action-packed experience and a must-play for shooter fans.</p>
+      </div>
+
+      <div class="review-card" id="GoW">
+        <h2>God of War(2018)</h2>
+        <img src="Gow.jpg" alt="God of War cover">
+        <span class="score">9/10</span>
+        <p>God of War (2018) is a critically acclaimed action-adventure game developed by Santa Monica Studio, revitalizing the iconic series with a more mature and introspective tone. The game shifts from Greek mythology to Norse, following Kratos and his son, Atreus, on a journey to scatter his wife’s ashes at the highest peak in the realm. The bond between father and son is central to the story, bringing emotional depth to the action.
+
+          Combat is revamped with a focus on strategic, close-quarters combat, featuring Kratos’ new weapon, the Leviathan Axe, which can be thrown and recalled, offering satisfying versatility. The game introduces a more open world with RPG elements, allowing players to explore and upgrade their gear, abilities, and powers.
+          
+          Visually, God of War is stunning, with seamless camera work that maintains immersion throughout the journey. The voice acting, especially from Kratos and Atreus, is superb, adding emotional weight to the story. While the game retains its brutal combat, it also emphasizes puzzle-solving and exploration, making it a well-rounded experience.
+          
+          Overall, God of War (2018) is a masterpiece that blends action, storytelling, and exploration, delivering one of the best gaming experiences of the generation. It's a must-play for fans of action games and anyone interested in a rich, narrative-driven adventure.</p>
+      </div>
+
+      <div class="review-card" id="KCD">
+        <h2>Kingdom Come: Deliverance</h2>
+        <img src="kcd.jpg" alt="Kingdom Come cover">
+        <span class="score">8.5/10</span>
+        <p>Kingdom Come: Deliverance is an open-world action RPG set in 15th-century Bohemia, offering a historically immersive experience. Developed by Warhorse Studios, the game focuses on realism, featuring detailed swordplay, authentic medieval settings, and a complex narrative.
+
+          The combat system is skill-based, requiring players to master different sword techniques, blocks, and strikes. The world is vast and meticulously crafted, with a focus on realism in everything from character interactions to how food, sleep, and stamina affect gameplay. Quests are deep, often involving moral choices, and the main story revolves around a young blacksmith’s journey to avenge his family’s death and restore peace.
+          
+          Visually, the game is stunning, with a beautiful recreation of medieval Bohemia, and the soundtrack complements the atmosphere. However, the game’s slow-paced mechanics, lack of fast travel early on, and occasional bugs can be frustrating for some players.
+          
+          Overall, Kingdom Come: Deliverance stands out for its authenticity and immersive world, making it a must-play for fans of history-driven RPGs, though it might be too slow-paced for those seeking a more traditional action experience.</p>
+      </div>
+    </section>
+    <section id="upcoming">
+      <h2>Upcoming Games</h2>
+      <p>Stay tuned for reviews of Elden Ring, Starfield, and more!</p>
+    </section>
+    <div id="scrollButtons">
+      <button id="scrollUp" onclick="scrollToTop()">↑</button>
+      <button id="scrollDown" onclick="scrollToBottom()">↓</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Connect with us:</p>
+    <a href="https://www.facebook.com/profile.php?id=61566307958957" class="fa fa-facebook"></a>
+   <a href="" class="fa fa-instagram"></a>
+   <a href="" class ="fa fa-twitter"></a>
+   <a href="https://www.reddit.com/user/Nikname666/" class="fa fa-reddit"></a>
+    <div class="help-icon" onclick="showHelp()">?</div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    const element = document.getElementById(hash);
+    if (element) {
+      element.style.border = "2px solid #91077f";
+      element.style.backgroundColor = "#f9f0ff";
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+});
+</script>
+  <script src="scripts.js"></script>
+
+  
+</body>
+</html>

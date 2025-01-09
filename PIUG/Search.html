@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #91077f;
+    }
+    .review-card {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 10px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .review-card h3 {
+      margin: 0;
+      color: #333;
+    }
+    .review-card p {
+      margin: 5px 0 0;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Results</h1>
+  <div id="results"></div>
+
+  <script>
+    // Data source
+    const reviews = [
+      { title: "Elden Ring Review", content: "An open-world masterpiece by FromSoftware.", url: "elden-ring.html" },
+      { title: "Cyberpunk 2077 Review", content: "A game with incredible potential but marred by bugs.", url: "cyberpunk-2077.html" },
+      { title: "The Witcher 3: Wild Hunt", content: "One of the best RPGs ever made.", url: "the-witcher-3.html" },
+      { title: "Red Dead Redemption 2", content: "A cinematic and immersive Western epic.", url: "red-dead-2.html" },
+      { title: "Hollow Knight Review", content: "A beautifully crafted Metroidvania with challenging gameplay.", url: "hollow-knight.html" }
+    ];
+
+    // Extract query from URL
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q')?.toLowerCase();
+
+    const resultsContainer = document.getElementById('results');
+
+    if (query) {
+      // Filter reviews based on query
+      const filteredReviews = reviews.filter(review =>
+        review.title.toLowerCase().includes(query) ||
+        review.content.toLowerCase().includes(query)
+      );
+
+      if (filteredReviews.length === 1) {
+        // If only one result, redirect to its URL
+        window.location.href = filteredReviews[0].url;
+      } else if (filteredReviews.length > 0) {
+        // If multiple results, display them
+        filteredReviews.forEach(review => {
+          const reviewCard = document.createElement('div');
+          reviewCard.classList.add('review-card');
+          reviewCard.innerHTML = `
+            <h3>${review.title}</h3>
+            <p>${review.content}</p>
+            <a href="${review.url}" style="color: #91077f;">Read More</a>
+          `;
+          resultsContainer.appendChild(reviewCard);
+        });
+      } else {
+        resultsContainer.textContent = 'No reviews found for your search query.';
+      }
+    } else {
+      resultsContainer.textContent = 'No search query provided.';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Reviews - Your Source for Honest Reviews</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    /* Header */
+    header {
+      background-color: #7e42f5;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      margin-left: 220px; /* Mutat în dreapta barei de navigație */
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 200px;
+      background-color: #631AF0;
+      padding-top: 20px;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      background-color: #3d0066;
+      border-radius: 5px;
+    }
+
+    /* Main content */
+    main {
+      margin-left: 220px; /* Mutat conținutul în dreapta barei de navigație */
+      padding: 20px;
+    }
+
+    /* Game Review Section */
+    .review-card {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .review-card h2 {
+      margin-bottom: 10px;
+    }
+
+    .review-card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .review-card .score {
+      background-color: goldenrod;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .review-card p {
+      margin: 15px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #7e42f5;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      margin-left: 220px; /* Mutat în dreapta barei de navigație */
+    }
+
+    footer a {
+      color: #99CCFF;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      main, footer {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Game Reviews</h1>
+    <p>Your Trusted Source for Honest Reviews</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#reviews">Latest Reviews</a></li>
+      <li><a href="#upcoming">Upcoming Games</a></li>
+      <li><a href="#contacts">Contact Us</a></li>
+      <li><a href="dark">Dark Mode</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Review Card Example -->
+    <section id="reviews">
+      <h2>Latest Reviews</h2>
+
+      <!-- Review 1 -->
+      <div class="review-card">
+        <h2>Cyberpunk 2077</h2>
+        <img src="cyberpunk.jpg" alt="Cyberpunk 2077 cover">
+        <span class="score">9.0/10</span>
+        <p>Cyberpunk 2077 is a visually stunning game with an immersive story. Despite its rocky launch, recent patches have significantly improved the gameplay. The world of Night City feels alive, and the choices you make can greatly affect the story.</p>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card">
+        <h2>The Witcher 3: Wild Hunt</h2>
+        <img src="witcher3.jpg" alt="The Witcher 3 cover">
+        <span class="score">10/10</span>
+        <p>The Witcher 3 remains one of the best RPGs ever made. With its rich storytelling, complex characters, and beautiful open world, it has set a standard for role-playing games. Even years after its release, it still holds up incredibly well.</p>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card">
+        <h2>Hades</h2>
+        <img src="hades.jpg" alt="Hades cover">
+        <span class="score">9.5/10</span>
+        <p>Hades is an addictive rogue-like dungeon crawler where you play as Zagreus, the son of Hades, trying to escape the underworld. The combat is fast and fluid, and the narrative is surprisingly deep for a game of this genre.</p>
+      </div>
+
+    </section>
+
+    <!-- Upcoming Games -->
+    <section id="upcoming">
+      <h2>Upcoming Games</h2>
+      <p>Stay tuned for our upcoming reviews of games like Elden Ring, Starfield, and much more!</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Connect with us:</p>
+    <a href="#">Facebook</a>
+    <a href="#">Twitter</a>
+    <a href="#">Instagram</a>
+    <a href="#">YouTube</a>
+  </footer>
+
+</body>
+</html>

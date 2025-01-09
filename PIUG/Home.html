@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Royal Game Reviews - Your Source for Honest Reviews</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Cormorant-Unicase;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #6b6b6a;
+      color: #f4f4f4;
+    }
+
+    /* Header */
+    header {
+      background-color: #91077f;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      margin-left: 150px;
+      transition: background-color 0.3s;
+      
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      margin: 15px;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      font-size: 18px;
+      display: block;
+      padding: 10px;
+      background-color: #3d0066;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      background-color: #262625;
+      color: white;
+      border-radius: 6px;
+    }
+
+    body.dark-mode header {
+      background-color: #62004a;
+    }
+    body.dark-mode .dark-mode-toggle:hover {
+      background-color: #262625;
+    }
+
+    /* Navigation */
+    
+
+    body.dark-mode nav {
+      background-color: #2b004a;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #6c007d;
+      border-radius: 5px;
+    }
+
+    nav input[type="text"] {
+      width: 80%;
+      margin: 20px 0;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #b388ff;
+      border-radius: 5px;
+      background-color: #f9f0ff; /* Fundal mov pal */
+      color: #333;
+    }
+
+    nav input[type="text"]:focus {
+      outline: none;
+      border-color: #91077f;
+      box-shadow: 0 0 5px rgba(145, 7, 127, 0.5);
+    }
+    .dark-mode-toggle {
+      margin: 15px;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      font-size: 18px;
+      display: block;
+      padding: 10px;
+      background-color: #3d0066;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode .dark-mode-toggle {
+      background-color: #2b004a;
+    }
+
+    /* Main content */
+    main {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    /* Carousel Styles */
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 700px;
+      overflow: hidden;
+      border-radius: 10px;
+      margin: auto;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+      height: 100%; /* For consistent image height */
+      object-fit: cover;
+    }
+
+    .carousel .prev, .carousel .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      font-size: 18px;
+      user-select: none;
+    }
+
+    .carousel .prev {
+      left: 10px;
+    }
+
+    .carousel .next {
+      right: 10px;
+    }
+
+    .carousel-indicators {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .carousel-indicators span {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 5px;
+      background-color: #ccc;
+      display: inline-block;
+      border-radius: 50%;
+    }
+
+    .carousel-indicators .active {
+      background-color: #333;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #3d0066;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-left: 150px;
+      margin-top: 20px;
+    }
+
+    body.dark-mode footer {
+      background-color: #2b004a;
+    }
+
+    footer a {
+      color: #99CCFF;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+
+      header {
+    width: 100%; /* Ocupă toată lățimea ecranului */
+    margin-left: 0; /* Elimină decalajul lateral */
+    padding: 15px; /* Ajustare padding pentru ecrane mici */
+  }
+  
+      nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      main, footer {
+        margin-left: 0;
+      }
+
+      .carousel {
+        height: 300px;
+      }
+    }
+
+    #scrollButtons {
+  position: fixed;
+  bottom: 80px; /* Ridică butoanele mai sus pentru a evita suprapunerea */
+  right: 20px; /* Păstrează poziția în dreapta */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+  #scrollButtons button {
+    background-color: #c080ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+  }
+
+  #scrollButtons button:hover {
+    background-color: #9a66cc;
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Royal Game Reviews</h1>
+    <p>Your Trusted Source for Honest Reviews</p>
+
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="Home.html"><b>Home</b></a></li>
+      <li><a href="Template_DM.html">Latest Reviews</a></li>
+      <li><a href="upcoming.html">Upcoming Games</a></li>
+      <li><a href="Video.html">Video</a></li>
+      <li><a href="Contacte.html">Contact Us</a></li>
+    </ul>
+    <span class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</span>
+    <input type="text" id="searchInput" placeholder="Search reviews..." onkeydown="handleSearch(event)">
+    
+    
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Carousel Section -->
+    <section id="home">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="game1.jpg" alt="Game 1">
+          <img src="game2.jpg" alt="Game 2">
+          <img src="game3.jpg" alt="Game 3">
+        </div>
+        <a class="prev" onclick="changeSlide(-1)">❮</a>
+        <a class="next" onclick="changeSlide(1)">❯</a>
+      </div>
+      <div class="carousel-indicators">
+        <span onclick="currentSlide(0)" class="active"></span>
+        <span onclick="currentSlide(1)"></span>
+        <span onclick="currentSlide(2)"></span>
+      </div>
+    </section>
+
+    <section id="upcoming">
+      <h2>Upcoming Games</h2>
+      <p>Stay tuned for our upcoming reviews of games like Elden Ring, Starfield, and much more!</p>
+    </section>
+
+    <div id="scrollButtons">
+      <button id="scrollUp" onclick="scrollToTop()">↑</button>
+      <button id="scrollDown" onclick="scrollToBottom()">↓</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Connect with us:</p>
+    <a href="https://www.facebook.com/profile.php?id=61566307958957" class="fa fa-facebook"></a>
+   <a href="" class="fa fa-instagram"></a>
+   <a href="" class ="fa fa-twitter"></a>
+   <a href="https://www.reddit.com/user/Nikname666/" class="fa fa-reddit"></a>
+    <div class="help-icon" onclick="showHelp()">?</div>
+
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Carousel Functionality
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const indicators = document.querySelectorAll('.carousel-indicators span');
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+      indicators.forEach(ind => ind.classList.remove('active'));
+      indicators[currentIndex].classList.add('active');
+    }
+
+    function changeSlide(direction) {
+      currentIndex = (currentIndex + direction + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    function currentSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+    }
+
+    setInterval(() => {
+      changeSlide(1);
+    }, 3000);
+  </script>
+  <script src="scripts.js"></script>
+</body>
+</html>
