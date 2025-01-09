@@ -127,14 +127,15 @@ nav input[type="text"] {
 
     /* Contact Form */
     form {
-      max-width: 500px;
-      margin: auto;
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s;
-    }
+  max-width: 500px; /* Crește lățimea maximă */
+  margin: 0 auto; /* Asigură centrare */
+  background-color: white;
+  padding: 30px; /* Crește padding-ul */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
 
     body.dark-mode form {
       background-color: #333;
@@ -251,7 +252,7 @@ main, footer {
   <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
+      <li><a href="/index.html">Home</a></li>
       <li><a href="Template_DM.html">Latest Reviews</a></li>
       <li><a href="upcoming.html">Upcoming Games</a></li>
       <li><a href="Video.html">Video</a></li>
@@ -305,6 +306,13 @@ main, footer {
     }
   </script>
   <script src="scripts.js"></script>
-  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMB8K7CGL3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KMB8K7CGL3');
+</script>
 </body>
 </html>
